@@ -31,3 +31,22 @@ p{
 #notice{
   color: #008000;
 }
+#error_explanation{
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  background-color: #f0f0f0;
+  margin-bottom: 20px;
+}
+#errors{
+  text-align: left;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px -7px 0;
+  background-color: #CC0000;
+  color: #ffffff;
+}
+ul{
+  padding: 0 0 0 40px;
+  margin: 33px;
+}

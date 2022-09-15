@@ -1,10 +1,4 @@
 class BooksController < ApplicationController
-  validates :title, presence: true
-  validates :body, presence: true
-end
-
-  def new
-  end
 
   def index
     @books = Book.all
@@ -12,12 +6,13 @@ end
   end
 
   def create
-    book = Book.new(book_params)
-    if book.save
+    @book = Book.new(book_params)
+    if @book.save
     flash[:notice] = "Book was successfully created."
-    redirect_to book_path(book.id)
+    redirect_to book_path(@book.id)
     else
-      render :new
+      @books = Book.all
+      render :index
     end
   end
 
@@ -30,10 +25,12 @@ end
   end
 
   def update
-    book = Book.find(params[:id])
-    if book.update(book_params)
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
     flash[:notice] = "Book was successfully updated."
-    redirect_to book_path(book.id)
+    redirect_to book_path(@book.id)
+    else
+      render :edit
     end
   end
 
@@ -49,3 +46,4 @@ end
   def book_params
     params.require(:book).permit(:title, :body)
   end
+end
